@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  SubscriptionsTableName: 
+    Type: String
+    
+Resources:
+  getAllItemsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get-all-items.getAllItemsHandler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 100
+      Description: A simple example includes a HTTP get method to get all items from a DynamoDB table.
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SubscriptionsTable
+      Environment:
+        Variables:
+          SUBSCRIPTIONS_TABLE: !Ref SubscriptionsTable
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /subscriptions
+            Method: GET
+            
+  SubscriptionsTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: !Ref SubscriptionsTableName
+      PrimaryKey:
+        Name: id
+        Type: String
+        
+Outputs:
+  WebEndpoint:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
