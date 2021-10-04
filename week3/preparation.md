@@ -1,6 +1,10 @@
  # Preparation
-- books, articles, videos, podcasts, online courses that are mandatory (mandatory)
-- and others are might be optional (optional)
+ 
+ ## Main
+- last weeks assignments 
+- read lesson plan
+- read [lambda overview](https://aws.amazon.com/lambda) and [lambda features](https://aws.amazon.com/lambda/features/)
+- read [Serverless computing (cloudflare)](https://www.cloudflare.com/learning/serverless/what-is-serverless/)
 
-## Flipped classroom videos
-- N/A
+## Relevant articles (optional)
+- [Serverless computing (wikipedia)]( https://en.wikipedia.org/wiki/Serverless_computing)

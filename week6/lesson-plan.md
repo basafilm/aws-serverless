@@ -2,11 +2,16 @@
 
 ## Pre-requisites:
 
+Compute
+Lambdas/Functions overview
+Cron/Timebased functions
+Assignments
+
 Something about installing the software or prior knowlegde about a specific topic
 
 ## Lesson Plan:
-### 1.	Sub-topic #3.1
 
-### 2.	Sub-topic #3.2
 
-### 3.	Sub-topic #3.3
+### 6. Class Assignments
+
+1. 
