@@ -1,0 +1,38 @@
+{
+    "resource": "/subscriptions",
+    "path": "/subscriptions",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "application/json,*/*"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "requestTime": "20/Jan/2018:20:41:29 +0000",
+        "path": "/subscriptions",
+        "accountId": "accountId",
+        "protocol": "HTTP/1.1",
+        "resourceId": "resourceId",
+        "stage": "dev",
+        "requestTimeEpoch": 1516480889081,
+        "requestId": "requestId",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "52.54.222.230",
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "user": null
+        },
+        "resourcePath": "/subscriptions",
+        "httpMethod": "POST",
+        "apiId": "apiId"
+    },
+    "body": "id=id&name=name&productId=productId&email=email&createdOn=createdOn",
+    "isBase64Encoded": false
+}

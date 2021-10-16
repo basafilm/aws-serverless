@@ -1,5 +1,4 @@
 AWSTemplateFormatVersion: 2010-09-09
-
 Transform: AWS::Serverless-2016-10-31
 Parameters:
   ProductsTableName:
@@ -8,7 +7,6 @@ Parameters:
   SubscriptionsTableName:
     Type: String
     Default: subscriptions-malek-table
-
 Globals:
   Function:
     Runtime: nodejs14.x
@@ -16,23 +14,25 @@ Globals:
     Timeout: 100
   Api:
     Cors:
-      AllowHeaders: "'*'"
-      AllowMethods: "'*'"
-      AllowOrigin: "'*'"
-      MaxAge: "'*'"
-
+      AllowHeaders: '''*'''
+      AllowMethods: '''*'''
+      AllowOrigin: '''*'''
+      MaxAge: '''*'''
 Resources:
   productsFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/products.productsHandler
-      Description: A simple example includes a HTTP get method to get all items from a DynamoDB table.
+      Description: A simple example includes a HTTP get method to get all items from
+        a DynamoDB table.
       Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref ProductsTable
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: ProductsTable
       Environment:
         Variables:
-          PRODUCTS_TABLE: !Ref ProductsTable
+          PRODUCTS_TABLE:
+            Ref: ProductsTable
       Events:
         ApiGet:
           Type: Api
@@ -55,19 +55,21 @@ Resources:
             Method: PUT
             RestApiId:
               Ref: MyAPI
-
+      CodeUri: productsFunction
   subscriptionsFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/subscriptions.subscriptionsHandler
-      Description: A simple example includes a HTTP post method to post all items to a DynamoDB table.
+      Description: A simple example includes a HTTP post method to post all items
+        to a DynamoDB table.
       Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref SubscriptionsTable
-
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: SubscriptionsTable
       Environment:
         Variables:
-          SUBSCRIPTIONS_TABLE: !Ref SubscriptionsTable
+          SUBSCRIPTIONS_TABLE:
+            Ref: SubscriptionsTable
       Events:
         Api1:
           Type: Api
@@ -90,29 +92,29 @@ Resources:
             Method: POST
             RestApiId:
               Ref: MyAPI
-
+      CodeUri: subscriptionsFunction
   ProductsTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: !Ref ProductsTableName
+      TableName:
+        Ref: ProductsTableName
       PrimaryKey:
         Name: id
         Type: String
-
   SubscriptionsTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: !Ref SubscriptionsTableName
+      TableName:
+        Ref: SubscriptionsTableName
       PrimaryKey:
         Name: id
         Type: String
-
   MyAPI:
     Type: AWS::Serverless::Api
     Properties:
       StageName: Prod
-
 Outputs:
   WebEndpoint:
-    Description: "API Gateway endpoint URL for Prod stage"
-    Value: !Sub "https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+    Description: API Gateway endpoint URL for Prod stage
+    Value:
+      Fn::Sub: https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com/Prod/
