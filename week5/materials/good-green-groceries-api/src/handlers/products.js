@@ -4,10 +4,6 @@ const dynamodb = require("aws-sdk/clients/dynamodb");
 const docClient = new dynamodb.DocumentClient();
 
 exports.productsHandler = async (event, context) => {
-  console.log('heardr',event.headers)
-  console.log("body", event.body)
-  console.log("method", event.httpMethod)
-  console.log("params", event.pathParameters)
   let body;
   let statusCode = 200;
 
